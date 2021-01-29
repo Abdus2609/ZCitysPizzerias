@@ -1,4 +1,4 @@
-def rangeChecker(num, lowerLimit, upperLimit):
+def range_checker(num, lowerLimit, upperLimit):
     if num < lowerLimit or num > upperLimit:
         raise Exception("Sorry, this input is out of range.")
     
@@ -12,7 +12,7 @@ def translate(str):
     return ints
 
 
-def genMatrix(dim):
+def gen_matrix(dim):
     matrix = []
     for i in range(dim):
         row = []
@@ -23,7 +23,7 @@ def genMatrix(dim):
     return matrix
 
 
-def updateCity(mat, coord, dim):
+def update_city(mat, coord, dim):
     x = coord[0] - 1
     y = coord[1] - 1
     r = coord[2]
@@ -51,24 +51,24 @@ def updateCity(mat, coord, dim):
 
 
 NM = translate(input())
-NM = [rangeChecker(x, 1, 10000) for x in NM]
+NM = [range_checker(x, 1, 10000) for x in NM]
 
 N = NM[0]
-city = genMatrix(N)
+city = gen_matrix(N)
 
 coords = []
 M = NM[1]
 
 for i in range(M):
     coord = translate(input())
-    points = [rangeChecker(n, 1, N) for n in [coord[0], coord[1]]]
-    R = rangeChecker(coord[2], 1, 100)
+    points = [range_checker(n, 1, N) for n in [coord[0], coord[1]]]
+    R = range_checker(coord[2], 1, 100)
     points.append(R)
     coords.append(points)
 
 a = 0
 while a < M:
-    city = updateCity(city, coords[a], N)
+    city = update_city(city, coords[a], N)
     a += 1
 
 listOfRanges = [num for rows in city for num in rows]
